@@ -5,23 +5,20 @@ import Head from "next/head";
 import { HeartHandshake, Wallet, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
-
-
-
 const Hero = () => {
   return (
     <>
       <Head>
-        <title>TransparentGiving – Blockchain-Powered NGO Donations</title>
+        <title>Verifaid – Blockchain-Powered NGO Donations</title>
         <meta name="description" content="Make every donation count. Track your impact with blockchain-powered transparency for NGOs on the XRPL." />
-        <meta property="og:title" content="TransparentGiving" />
+        <meta property="og:title" content="Verifaid" />
         <meta property="og:description" content="Empowering NGOs and donors with real-time impact tracking on the XRP Ledger." />
         <meta property="og:image" content="/preview.png" />
-        <meta property="og:url" content="https://transparentgiving.org" />
+        <meta property="og:url" content="https://verifaid.org" />
       </Head>
       <section
         id="home"
-        className="dark:bg-gray-dark relative z-10 overflow-hidden bg-white pb-16 pt-[120px] md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-gradient-to-br from-white via-slate-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pb-16 pt-[120px] md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
@@ -32,44 +29,62 @@ const Hero = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="mx-auto max-w-[800px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Revolutionizing NGO Transparency with Blockchain Technology
+                <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+                  Revolutionizing NGO Transparency
+                  <br className="hidden sm:inline" />
+                  with Blockchain Technology
                 </h1>
-                <p className="dark:text-body-color-dark mb-12 text-base !leading-relaxed text-body-color sm:text-lg md:text-xl">
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-10">
                   Every donation matters, but too often, donors are left in the dark.
-                  TransparentGiving changes that by leveraging the XRP Ledger and RLUSD
-                  to bring radical transparency to charitable giving. NGOs build trust
-                  through on-chain accountability, while donors can track their impact
-                  in real time, ensuring every contribution reaches its intended goal.
+                  <span className="text-primary font-medium"> Verifaid </span>
+                  changes that by leveraging the XRP Ledger and RLUSD to bring radical transparency to charitable giving.
+                  NGOs build trust through on-chain accountability, while donors can track their impact in real time.
                 </p>
 
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <a
+                <motion.div
+                  className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.15,
+                      },
+                    },
+                  }}
+                >
+                  <motion.a
                     href="#"
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                    variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
                   >
                     Get Started
-                  </a>
+                  </motion.a>
 
-                  <a
+                  <motion.a
                     href="#how-it-works"
                     className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
+                    variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
                   >
                     Learn More
-                  </a>
+                  </motion.a>
 
-                  <Link
-                    href="/app"
-                    className="inline-block rounded-sm border border-primary px-8 py-4 text-base font-semibold text-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out"
+                  <motion.div
+                    variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
                   >
-                    Launch Platform
-                  </Link>
-                </div>
+                    <Link
+                      href="/app"
+                      className="inline-block rounded-sm border border-primary px-8 py-4 text-base font-semibold text-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out"
+                    >
+                      Launch Platform
+                    </Link>
+                  </motion.div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
         </div>
-
 
         <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
           <svg
@@ -343,7 +358,7 @@ const Hero = () => {
               </p>
             </div>
           </div>
-          </div>
+        </div>
       </section>
     </>
   );
