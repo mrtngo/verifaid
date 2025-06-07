@@ -14,7 +14,7 @@ JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 WALLET_SECRET = "sEdSMox8K3oEoHGUHEGkgugKRnUEyLB"
 PINATA_API_KEY = "f0b9f53a248209ce82b8"
 PINATA_SECRET_API_KEY = "1b69c4981301fbcf6c74d6bbd6489f8456563230243fe4ffd5f5189873df462e"
-RECEIPT_FILE_PATH = "./invoice.png"
+
 
 # -------- Upload File to IPFS --------
 def upload_to_ipfs(file_path: str) -> str:
@@ -45,18 +45,20 @@ def mint_receipt_nft(client: JsonRpcClient, wallet: Wallet, uri: str):
 
 
 # -------- Main Flow --------
-def main():
+def uploadInvoiceAsNFT():
     if not all([WALLET_SECRET, PINATA_API_KEY, PINATA_SECRET_API_KEY]):
         print("❌ One or more required env vars are missing.")
         return
 
     client = JsonRpcClient(JSON_RPC_URL)
-    wallet = Wallet.from_seed(WALLET_SECRET)
-
-    print(f"Using Wallet: {wallet.classic_address}")
+    print("\n=== Wallet Information ===")
+    wallet_seed = input("Enter your wallet seed: ")
+    wallet = Wallet.from_seed(wallet_seed)
+    print("Wallet address:", wallet.classic_address)
 
     try:
         # 1. Upload file to IPFS
+        RECEIPT_FILE_PATH = input("Enter the path to your receipt file: ")
         cid = upload_to_ipfs(RECEIPT_FILE_PATH)
         ipfs_uri = f"ipfs://{cid}"
         print(f"📦 Uploaded to IPFS: {ipfs_uri}")
