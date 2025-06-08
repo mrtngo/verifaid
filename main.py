@@ -1,8 +1,9 @@
 #Imports
-from xrpl_txs.donation import *
+from xrpl_txs.donation import donate
 from xrpl_txs.invoiceNft import uploadInvoiceAsNFT
 from xrpl_txs.NGOCreation import create_ngo
 from xrpl_txs.trustline import *
+from xrpl_txs.payroll import payroll
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
         elif choice == '2':
             view_ngos()
         elif choice == '3':
-            donate_to_ngo()
+            donate()
         elif choice == '4':
             act_as_ngo()
         elif choice == '5':
@@ -45,7 +46,7 @@ def act_as_ngo():
         elif choice == '2':
             uploadInvoiceAsNFT()
         elif choice == '3':
-            pay_employee_salary()
+            payroll()
         elif choice == '4':
             break
         else:
